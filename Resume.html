@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Резюме студента Дарьи Багрянцевой">
+    <title>Дарья Багрянцева — резюме</title>
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <link rel="icon" type="image/png" href="img/CAT.jpg">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header>
+        <button id="theme-toggle" title="Сменить тему">🌙</button>
+        <button id="blind-toggle">👁 Для слабовидящих</button>
+        <nav>
+            <a href="#about">Обо мне</a>
+            <a href="#education">Образование</a>
+            <a href="#skills">Навыки</a>
+            <a href="#me">Мои соцсети</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+        <h1>(/◕ヮ◕)/ Багрянцева Дарья (๑ &gt;ᴗ&lt; ๑)</h1>
+        <p class="center">Студент группы 09А49</p>
+
+
+        </header>
+
+    <main>
+        <!-- ОБО МНЕ -->
+        <section id="about">
+            <h2>Обо мне</h2>
+            <img src="img/me.jpg" alt="Это я" width="300">
+            <p class="squad-title">Это я</p>
+            <p>Привет! Я учусь в колледже на направлении
+               <strong>Информационные системы и программирование</strong>.
+               Сейчас учусь создавать сайты на <em>HTML</em>.</p>
+        </section>
+
+        <!-- ОБРАЗОВАНИЕ -->
+        <section id="education">
+            <h2>Образование</h2>
+            <p>Колледж, группа 09А49 —
+               <strong>Информационные системы и программирование</strong></p>
+            <p>2024 — настоящее время</p>
+        </section>
+
+        <!-- НАВЫКИ -->
+        <section id="skills">
+            <h2>Навыки</h2>
+            <ul>
+                <li>HTML — основы</li>
+                <li>CSS — начало изучения</li>
+                <li>C++</li>
+                <li>Java</li>
+                <li>Python</li>
+            </ul>
+        </section>
+
+        <!-- КОНТАКТЫ -->
+        <section id="contacts">
+            <h2>Связаться со мной</h2>
+            <button id="vk-btn" class="btn">Перейти на ВКонтакте</button>
+            <p>Или через форму ниже:</p>
+            <form action="#" method="POST">
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" placeholder="Как вас зовут?" required>
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="you@mail.ru" required>
+
+                <label for="msg">Сообщение</label>
+                <textarea id="msg" name="message" rows="4" placeholder="Ваше сообщение..."></textarea>
+
+                <button type="submit">Отправить</button>
+            </form>
+            <p id="form-status" role="status"></p>
+        </section>
+
+        <!-- СОЦСЕТИ -->
+        <section id="me">
+            <h2>Мои соцсети</h2>
+            <button id="meow-btn" class="btn">Показать сообщение</button>
+        </section>
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <p>© <span id="year">2026</span> Багрянцева Дарья. Учебный проект.</p>
+        <img src="img/USI.jpg" alt="А это мои друзья" width="300">
+    </footer>
+
+    <!-- КНОПКА «НАВЕРХ» -->
+    <button id="to-top" title="Наверх">↑</button>
+
+    <script src="js/script.js" defer></script>
+</body>
+</html>
