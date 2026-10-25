@@ -12,7 +12,7 @@
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Тёмная тема: переключается кнопкой через <html class="dark"> */
+/* Тёмная тема */
 html.dark {
     --color-text: #e2e8f0;
     --color-bg: #2d1f30;
@@ -36,36 +36,86 @@ body {
     transition: background 0.3s, color 0.3s;
 }
 
-    /* Класс, который включает версию для слабовидящих */
-    body.blind {
-        background-color: #000;
-        color: #ffff00;
-        font-size: 22px;
-        letter-spacing: 0.05em;
-        line-height: 1.8;
-    }
-
-    body.blind a {
-        color: #00ffff;
-    }
-
-    body.blind button {
-        background-color: #ffff00;
-        color: #000;
-        border: 2px solid #ffff00;
-        font-size: 20px;
-    }
-
-    body.blind img {
-        filter: grayscale(30%);
-    }
-
-    body.blind h1,
-    body.blind h2 {
-        color: #ffff00;
+/* ============ 0.1 ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ ============ */
+body.blind {
+    background-color: #000;
+    color: #ffff00;
+    font-size: 22px;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
 }
 
-img { max-width: 100%; height: auto; display: block; border-radius: 10px; }
+body.blind a { color: #00ffff; }
+
+body.blind button {
+    background-color: #ffff00;
+    color: #000;
+    border: 2px solid #ffff00;
+    font-size: 20px;
+}
+
+body.blind #theme-toggle,
+body.blind #blind-toggle {
+    background-color: #ffff00;
+    color: #000;
+}
+
+body.blind h1,
+body.blind h2 {
+    color: #ffff00;
+}
+
+body.blind section {
+    background-color: #111;
+    border: 2px solid #ffff00;
+}
+
+body.blind input,
+body.blind textarea {
+    background-color: #000;
+    color: #ffff00;
+    border: 2px solid #ffff00;
+}
+
+body.blind footer {
+    background-color: #000;
+    color: #ffff00;
+    border: 2px solid #ffff00;
+}
+
+/* Фото остаются цветными */
+
+/* ============ 0.2 БАЗОВЫЕ ЭЛЕМЕНТЫ ============ */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+/* Фокус для клавиатуры */
+:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: #000;
+    color: #ffff00;
+    padding: 10px 20px;
+    z-index: 10000;
+    transition: top 0.2s;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
 
 /* ============ 1. ШАПКА ============ */
 header {
@@ -73,7 +123,7 @@ header {
     background: linear-gradient(135deg, #a860ab, #8d4590);
     color: #fff;
     text-align: center;
-    padding: 50px 20px;
+    padding: 60px 20px 50px;
     border-radius: var(--radius);
     margin-bottom: 30px;
 }
@@ -103,11 +153,18 @@ nav a {
 
 nav a:hover { color: var(--color-accent); }
 
-/* Кнопка смены темы */
-#theme-toggle {
+/* Кнопки темы и слабовидящих */
+.theme-buttons {
     position: absolute;
     top: 16px;
     right: 16px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    z-index: 10;
+}
+
+#theme-toggle {
     width: 44px;
     height: 44px;
     background: rgba(255, 255, 255, 0.25);
@@ -116,9 +173,27 @@ nav a:hover { color: var(--color-accent); }
     font-size: 20px;
     cursor: pointer;
     transition: background 0.2s;
+    margin: 0;
+    padding: 0;
+    color: #fff;
 }
 
 #theme-toggle:hover { background: rgba(255, 255, 255, 0.4); }
+
+#blind-toggle {
+    background: rgba(255, 255, 255, 0.25);
+    border: none;
+    border-radius: 30px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    transition: background 0.2s;
+    margin: 0;
+}
+
+#blind-toggle:hover { background: rgba(255, 255, 255, 0.4); }
 
 /* ============ 2. КОНТЕНТ ============ */
 main {
@@ -142,6 +217,8 @@ section h2 {
     display: inline-block;
     margin-top: 0;
 }
+
+html.dark section h2 { color: var(--color-accent); border-color: var(--color-accent); }
 
 /* ============ 3. ОБО МНЕ ============ */
 #about { text-align: center; }
@@ -207,7 +284,7 @@ button, .btn {
 
 button:hover, .btn:hover { background-color: var(--color-main-dark); }
 
-/* Сообщение об отправке формы */
+/* Сообщение об отправке */
 #form-status {
     max-width: 480px;
     margin: 12px auto 0;
@@ -225,6 +302,11 @@ button:hover, .btn:hover { background-color: var(--color-main-dark); }
     background: #f0fff4;
 }
 
+html.dark #form-status.visible {
+    background: #1a3d2a;
+    color: #68d391;
+}
+
 /* ============ 7. СОЦСЕТИ ============ */
 #me { text-align: center; }
 
@@ -238,8 +320,11 @@ footer {
     border-radius: var(--radius);
 }
 
-footer img {
+footer img,
+.footer-img {
+    display: block;
     margin: 16px auto 0;
+    border-radius: 10px;
 }
 
 /* ============ 9. КНОПКА «НАВЕРХ» ============ */
@@ -261,6 +346,7 @@ footer img {
     transition: opacity 0.3s, visibility 0.3s;
     margin: 0;
     padding: 0;
+    z-index: 100;
 }
 
 #to-top.visible {
@@ -270,7 +356,228 @@ footer img {
 
 /* ============ 10. АДАПТИВНОСТЬ ============ */
 @media (max-width: 600px) {
-    header { padding: 40px 16px; }
+    header { padding: 80px 16px 40px; }
+
     nav { gap: 12px; font-size: 0.9rem; }
+
     section { padding: 16px; }
+
+    .theme-buttons {
+        top: 12px;
+        right: 12px;
+    }
+
+    #blind-toggle {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}
+
+/* ============ 11. ПАНЕЛЬ ДОСТУПНОСТИ ============ */
+.a11y-fab {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #0d6efd;
+    color: #fff;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.a11y-fab:hover {
+    background: #0b5ed7;
+    transform: scale(1.1);
+}
+
+.a11y-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    max-width: 90vw;
+    height: 100vh;
+    background: #ffffff;
+    color: #1a202c;
+    padding: 20px;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+}
+
+.a11y-panel.open {
+    transform: translateX(0);
+}
+
+.a11y-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #0d6efd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.a11y-header h2 {
+    margin: 0;
+    color: #0d6efd;
+    font-size: 1.4rem;
+    border: none;
+    padding: 0;
+}
+
+.a11y-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+    line-height: 1;
+    padding: 0 8px;
+    margin: 0;
+    width: auto;
+    border-radius: 4px;
+}
+
+.a11y-close:hover {
+    background: #f0f0f0;
+    color: #000;
+}
+
+.a11y-group {
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.a11y-label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin: 0 0 8px;
+    color: #333;
+    display: block;
+}
+
+.a11y-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.a11y-row button {
+    flex: 1;
+    padding: 8px 12px;
+    margin: 0;
+    font-size: 0.9rem;
+    background: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    min-width: 60px;
+}
+
+.a11y-row button:hover {
+    background: #0b5ed7;
+}
+
+.a11y-row button[aria-pressed="true"] {
+    background: #198754;
+}
+
+#sr-voice,
+#sr-rate {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+#sr-rate {
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+#sr-rate-value {
+    color: #0d6efd;
+    font-weight: bold;
+}
+
+/* Высокая контрастность */
+body.high-contrast {
+    background: #000 !important;
+    color: #ffff00 !important;
+}
+
+body.high-contrast header {
+    background: #000 !important;
+    border: 2px solid #ffff00;
+}
+
+body.high-contrast section {
+    background: #000 !important;
+    color: #ffff00 !important;
+    border: 2px solid #ffff00;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast p,
+body.high-contrast li {
+    color: #ffff00 !important;
+}
+
+body.high-contrast a {
+    color: #00ffff !important;
+}
+
+body.high-contrast button {
+    background: #ffff00 !important;
+    color: #000 !important;
+    border: 2px solid #ffff00;
+}
+
+/* Размеры шрифта */
+html.font-small { font-size: 14px; }
+html.font-normal { font-size: 16px; }
+html.font-large { font-size: 20px; }
+html.font-xlarge { font-size: 24px; }
+
+/* Подсветка читаемого блока */
+.sr-highlight {
+    background: #fff3cd !important;
+    outline: 3px solid #ffc107;
+    transition: background 0.2s;
+}
+
+body.high-contrast .sr-highlight {
+    background: #333 !important;
+    outline: 3px solid #ffff00;
+}
+
+/* Мобильная адаптация панели */
+@media (max-width: 600px) {
+    .a11y-panel {
+        width: 280px;
+    }
+
+    .a11y-fab {
+        width: 46px;
+        height: 46px;
+        font-size: 22px;
+        top: 12px;
+        left: 12px;
+    }
 }
