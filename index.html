@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Резюме студента Дарьи Багрянцевой — Информационные системы и программирование">
+    <meta name="author" content="Дарья Багрянцева">
+    <title>Дарья Багрянцева — резюме</title>
+
+    <link rel="icon" type="image/jpeg" href="img/CAT.jpg">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ССЫЛКА «К СОДЕРЖИМОМУ» ДЛЯ КЛАВИАТУРЫ -->
+    <a href="#main" class="skip-link">Перейти к содержимому</a>
+
+    <!-- КНОПКА ОТКРЫТИЯ ПАНЕЛИ ДОСТУПНОСТИ -->
+    <button id="a11y-open" class="a11y-fab" aria-label="Открыть панель доступности" title="Настройки для слабовидящих">♿</button>
+
+    <!-- ПАНЕЛЬ ДОСТУПНОСТИ -->
+    <aside id="a11y-panel" class="a11y-panel" role="dialog" aria-label="Панель доступности" aria-hidden="true">
+        <div class="a11y-header">
+            <h2>Доступность</h2>
+            <button id="a11y-close" class="a11y-close" aria-label="Закрыть панель">×</button>
+        </div>
+
+        <!-- 1. РАЗМЕР ШРИФТА -->
+        <div class="a11y-group">
+            <p class="a11y-label">Размер шрифта</p>
+            <div class="a11y-row">
+                <button id="font-down" aria-label="Уменьшить шрифт">A−</button>
+                <button id="font-reset" aria-label="Обычный размер шрифта">A</button>
+                <button id="font-up" aria-label="Увеличить шрифт">A+</button>
+            </div>
+        </div>
+
+        <!-- 2. КОНТРАСТНОСТЬ -->
+        <div class="a11y-group">
+            <p class="a11y-label">Контрастность</p>
+            <div class="a11y-row">
+                <button id="contrast-toggle" aria-pressed="false">Высокая контрастность</button>
+            </div>
+        </div>
+
+        <!-- 3. ЧТЕНИЕ ВСЛУХ (СКРИНРИДЕР) -->
+        <div class="a11y-group">
+            <p class="a11y-label">Читать вслух (скринридер)</p>
+            <div class="a11y-row">
+                <button id="sr-play" aria-label="Начать чтение">▶ Читать</button>
+                <button id="sr-pause" aria-label="Пауза">II Пауза</button>
+                <button id="sr-stop" aria-label="Остановить чтение">■ Стоп</button>
+            </div>
+            <div class="a11y-row">
+                <button id="sr-prev" aria-label="Предыдущий блок">◀ Назад</button>
+                <button id="sr-next" aria-label="Следующий блок">Вперёд ▶</button>
+            </div>
+
+            <label for="sr-voice" class="a11y-label">Голос</label>
+            <select id="sr-voice"></select>
+
+            <label for="sr-rate" class="a11y-label">
+                Скорость: <span id="sr-rate-value">1.0</span>
+            </label>
+            <input id="sr-rate" type="range" min="0.5" max="2" step="0.1" value="1">
+        </div>
+    </aside>
+
+    <!-- ШАПКА -->
+    <header>
+        <div class="theme-buttons">
+            <button id="theme-toggle" type="button" aria-label="Переключить тёмную тему" title="Сменить тему">🌙</button>
+            <button id="blind-toggle" type="button" aria-pressed="false">👁 Для слабовидящих</button>
+        </div>
+
+        <nav aria-label="Основная навигация">
+            <a href="#about">Обо мне</a>
+            <a href="#education">Образование</a>
+            <a href="#skills">Навыки</a>
+            <a href="#me">Мои соцсети</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+
+        <h1>(/◕ヮ◕)/ Багрянцева Дарья (๑ &gt;ᴗ&lt; ๑)</h1>
+        <p class="center">Студент группы 09А49</p>
+    </header>
+
+    <main id="main">
+
+        <!-- ОБО МНЕ -->
+        <section id="about">
+            <h2>Обо мне</h2>
+            <img src="img/me.jpg" alt="Это я" width="300">
+            <p class="squad-title">Это я</p>
+            <p>Привет! Я учусь в колледже на направлении
+               <strong>Информационные системы и программирование</strong>.
+               Сейчас учусь создавать сайты на <em>HTML</em>.</p>
+        </section>
+
+        <!-- ОБРАЗОВАНИЕ -->
+        <section id="education">
+            <h2>Образование</h2>
+            <p>Колледж, группа 09А49 —
+               <strong>Информационные системы и программирование</strong></p>
+            <p>2024 — настоящее время</p>
+        </section>
+
+        <!-- НАВЫКИ -->
+        <section id="skills">
+            <h2>Навыки</h2>
+            <ul>
+                <li>HTML — основы</li>
+                <li>CSS — начало изучения</li>
+                <li>C++</li>
+                <li>Java</li>
+                <li>Python</li>
+            </ul>
+        </section>
+
+        <!-- КОНТАКТЫ -->
+        <section id="contact">
+            <h2>Связаться со мной</h2>
+            <p class="center">Или через форму ниже:</p>
+
+            <!-- Ваша рабочая форма с подключенным Formspree -->
+            <form action="https://formspree.io/f/xqppeekl" method="POST">
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" placeholder="Имя" required>
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="E-mail" required>
+
+                <label for="message">Сообщение</label>
+                <textarea id="message" name="message" placeholder="Сообщение" required></textarea>
+
+                <button type="submit">Отправить</button>
+            </form>
+
+            <!-- Блок для отображения статуса отправки ("Отправка...", "Спасибо!..." и т.д.) -->
+            <div id="form-status"></div>
+        </section>
+
+
+        <!-- СОЦСЕТИ -->
+        <section id="me">
+            <h2>Мои соцсети</h2>
+            <button id="meow-btn" class="btn" type="button">Показать сообщение</button>
+        </section>
+
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <p>© <span id="year">2026</span> Багрянцева Дарья. Учебный проект.</p>
+        <img src="img/USI.jpg" alt="А это мои друзья" width="300" class="footer-img">
+    </footer>
+
+    <!-- КНОПКА «НАВЕРХ» -->
+    <button id="to-top" type="button" aria-label="Вернуться наверх" title="Наверх">↑</button>
+
+    <script src="js/script.js" defer></script>
+</body>
+</html>
